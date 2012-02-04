@@ -21,9 +21,6 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>winexe</id>
             <build>
                 <plugins>
                     <plugin>
@@ -76,8 +73,5 @@
                     <url>http://tools.softwaremill.pl/nexus/content/groups/public/</url>
                 </pluginRepository>
             </pluginRepositories>
-
-        </profile>
-    </profiles>
 
 </project>
