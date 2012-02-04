@@ -26,7 +26,7 @@
                     <plugin>
                         <groupId>com.akathist.maven.plugins.launch4j</groupId>
                         <artifactId>launch4j-maven-plugin</artifactId>
-                        <version>1.4</version>
+                        <version>1.5</version>
                         <executions>
                             <execution>
                                 <id>l4j-clui</id>
@@ -71,16 +71,14 @@
             -->
             <repositories>
                 <repository>
-                    <id>softwaremill-public</id>
-                    <name>SoftwareMill Public Reposityr</name>
-                    <url>http://tools.softwaremill.pl/nexus/content/groups/public/</url>
+                    <id>vorburger-github-releases</id>
+                    <url>http://vorburger.github.com/m2p2-repository/maven/releases</url>
                 </repository>
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
-                    <id>softwaremill-public</id>
-                    <name>SoftwareMill Public Reposityr</name>
-                    <url>http://tools.softwaremill.pl/nexus/content/groups/public/</url>
+                    <id>vorburger-github-releases</id>
+                    <url>http://vorburger.github.com/m2p2-repository/maven/releases</url>
                 </pluginRepository>
             </pluginRepositories>
 
