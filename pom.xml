@@ -66,6 +66,16 @@
                 </plugins>
             </build>
 
+            <!-- NOTE: launch4j-maven-plugin downloads non-plugin workdir-* artifacts, 
+                 so we need both a repository as well as a pluginRepository:
+            -->
+            <repositories>
+                <repository>
+                    <id>softwaremill-public</id>
+                    <name>SoftwareMill Public Reposityr</name>
+                    <url>http://tools.softwaremill.pl/nexus/content/groups/public/</url>
+                </repository>
+            </repositories>
             <pluginRepositories>
                 <pluginRepository>
                     <id>softwaremill-public</id>
