@@ -15,7 +15,11 @@ public class App extends JFrame {
     }
 
     private void sayHello() {
-        JOptionPane.showMessageDialog(this, "Hello world!", "Hello", JOptionPane.INFORMATION_MESSAGE);
+        String name = System.getProperty("name");
+        if (name == null) {
+            name = "world";
+        }
+        JOptionPane.showMessageDialog(this, String.format("Hello %s!", name), "Hello", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
 
