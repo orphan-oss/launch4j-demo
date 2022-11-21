@@ -1,4 +1,4 @@
-package pl.org.lenart.launch4j;
+package software.orphan.launch4j;
 
 import javax.swing.*;
 import java.awt.*;

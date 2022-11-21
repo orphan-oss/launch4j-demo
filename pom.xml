@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.org.lenart.launch4j</groupId>
+    <groupId>software.orphan.launch4j</groupId>
     <artifactId>launch4j-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -20,55 +20,116 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>com.akathist.maven.plugins.launch4j</groupId>
-                <artifactId>launch4j-maven-plugin</artifactId>
-                <version>2.1.2</version>
-                <executions>
-                    <execution>
-                        <id>l4j-clui</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>launch4j</goal>
-                        </goals>
-                        <configuration>
-                            <headerType>gui</headerType>
-                            <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
-                            <outfile>${project.build.directory}/app.exe</outfile>
-                            <downloadUrl>http://java.com/download</downloadUrl>
-                            <classPath>
-                                <mainClass>pl.org.lenart.launch4j.App</mainClass>
-                                <preCp>anything</preCp>
-                            </classPath>
-                            <jre>
-                                <minVersion>1.8</minVersion>
-                                <jdkPreference>preferJre</jdkPreference>
-                                <opts>
-                                    <opt>-Dname=Lukasz</opt>
-                                </opts>
-                            </jre>
-                            <versionInfo>
-                                <fileVersion>1.0.0.0</fileVersion>
-                                <txtFileVersion>${project.version}</txtFileVersion>
-                                <fileDescription>Launch4j Demo App</fileDescription>
-                                <copyright>Lukasz Lenart</copyright>
-                                <productVersion>1.0.0.0</productVersion>
-                                <txtProductVersion>1.0.0.0</txtProductVersion>
-                                <productName>App</productName>
-                                <companyName>Lukasz Lenart</companyName>
-                                <internalName>app</internalName>
-                                <originalFilename>app.exe</originalFilename>
-                            </versionInfo>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                    <artifactId>launch4j-maven-plugin</artifactId>
+                    <version>2.2.0-SNAPSHOT</version>
+                    <executions>
+                        <execution>
+                            <id>l4j-clui</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>launch4j</goal>
+                            </goals>
+                            <configuration>
+                                <headerType>gui</headerType>
+                                <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+                                <outfile>${project.build.directory}/app.exe</outfile>
+                                <downloadUrl>http://java.com/download</downloadUrl>
+                                <classPath>
+                                    <mainClass>software.orphan.launch4j.App</mainClass>
+                                    <preCp>anything</preCp>
+                                </classPath>
+                                <jre>
+                                    <path>%JAVA_HOME%;%PATH%</path>
+                                    <minVersion>1.8</minVersion>
+                                    <bundledJreAsFallback>true</bundledJreAsFallback>
+                                    <jdkPreference>preferJre</jdkPreference>
+                                    <requiresJdk>true</requiresJdk>
+                                    <bundledJre64Bit>true</bundledJre64Bit>
+                                    <runtimeBits>32</runtimeBits>
+                                    <opts>
+                                        <opt>-Dname=Lukasz</opt>
+                                    </opts>
+                                </jre>
+                                <messages>
+                                    <bundledJreErr>Test bundledJreErr</bundledJreErr>
+                                </messages>
+                                <versionInfo>
+                                    <fileVersion>1.0.0.0</fileVersion>
+                                    <txtFileVersion>${project.version}</txtFileVersion>
+                                    <fileDescription>Launch4j Demo App</fileDescription>
+                                    <copyright>Lukasz Lenart</copyright>
+                                    <productVersion>1.0.0.0</productVersion>
+                                    <txtProductVersion>1.0.0.0</txtProductVersion>
+                                    <productName>App</productName>
+                                    <companyName>Lukasz Lenart</companyName>
+                                    <internalName>app</internalName>
+                                    <originalFilename>app.exe</originalFilename>
+                                    <trademarks>Luk ™</trademarks>
+                                </versionInfo>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+    <profiles>
+        <profile>
+            <id>build</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>launch4j1</id>
+            <!-- use -DskipLaunch4j -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>launch4j2</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
+    <repositories>
+        <repository>
+            <id>oss-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
