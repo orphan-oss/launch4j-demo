@@ -30,7 +30,7 @@
                 <plugin>
                     <groupId>com.akathist.maven.plugins.launch4j</groupId>
                     <artifactId>launch4j-maven-plugin</artifactId>
-                    <version>2.2.0-SNAPSHOT</version>
+                    <version>2.2.0</version>
                     <executions>
                         <execution>
                             <id>l4j-clui</id>
@@ -129,10 +129,10 @@
             <layout>default</layout>
             <name>OSS Sonatype Snapshots</name>
             <releases>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
