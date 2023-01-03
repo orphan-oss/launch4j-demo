@@ -4,7 +4,7 @@
 
     <groupId>software.orphan.launch4j</groupId>
     <artifactId>launch4j-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>launch4j-demo</name>
@@ -25,62 +25,60 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>com.akathist.maven.plugins.launch4j</groupId>
-                    <artifactId>launch4j-maven-plugin</artifactId>
-                    <version>2.2.0-SNAPSHOT</version>
-                    <executions>
-                        <execution>
-                            <id>l4j-clui</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>launch4j</goal>
-                            </goals>
-                            <configuration>
-                                <headerType>gui</headerType>
-                                <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
-                                <outfile>${project.build.directory}/app.exe</outfile>
-                                <downloadUrl>http://java.com/download</downloadUrl>
-                                <classPath>
-                                    <mainClass>software.orphan.launch4j.App</mainClass>
-                                    <preCp>anything</preCp>
-                                </classPath>
-                                <jre>
-                                    <path>%JAVA_HOME%;%PATH%</path>
-                                    <minVersion>1.8</minVersion>
-                                    <bundledJreAsFallback>true</bundledJreAsFallback>
-                                    <jdkPreference>preferJre</jdkPreference>
-                                    <requiresJdk>true</requiresJdk>
-                                    <bundledJre64Bit>true</bundledJre64Bit>
-                                    <runtimeBits>32</runtimeBits>
-                                    <opts>
-                                        <opt>-Dname=Lukasz</opt>
-                                    </opts>
-                                </jre>
-                                <messages>
-                                    <bundledJreErr>Test bundledJreErr</bundledJreErr>
-                                </messages>
-                                <versionInfo>
-                                    <fileVersion>1.0.0.0</fileVersion>
-                                    <txtFileVersion>${project.version}</txtFileVersion>
-                                    <fileDescription>Launch4j Demo App</fileDescription>
-                                    <copyright>Lukasz Lenart</copyright>
-                                    <productVersion>1.0.0.0</productVersion>
-                                    <txtProductVersion>1.0.0.0</txtProductVersion>
-                                    <productName>App</productName>
-                                    <companyName>Lukasz Lenart</companyName>
-                                    <internalName>app</internalName>
-                                    <originalFilename>app.exe</originalFilename>
-                                    <trademarks>Luk ™</trademarks>
-                                </versionInfo>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.2.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>l4j-gui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+                            <outfile>${project.build.directory}/app.exe</outfile>
+                            <downloadUrl>http://java.com/download</downloadUrl>
+                            <classPath>
+                                <mainClass>software.orphan.launch4j.App</mainClass>
+                                <preCp>anything</preCp>
+                            </classPath>
+                            <jre>
+                                <path>%JAVA_HOME%;%PATH%</path>
+                                <minVersion>1.8</minVersion>
+                                <bundledJreAsFallback>true</bundledJreAsFallback>
+                                <jdkPreference>preferJre</jdkPreference>
+                                <requiresJdk>true</requiresJdk>
+                                <bundledJre64Bit>true</bundledJre64Bit>
+                                <runtimeBits>32</runtimeBits>
+                                <opts>
+                                    <opt>-Dname=Lukasz</opt>
+                                </opts>
+                            </jre>
+                            <messages>
+                                <bundledJreErr>Test bundledJreErr</bundledJreErr>
+                            </messages>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>${project.version}</txtFileVersion>
+                                <fileDescription>Launch4j Demo App</fileDescription>
+                                <copyright>Lukasz Lenart</copyright>
+                                <productVersion>1.0.0.0</productVersion>
+                                <txtProductVersion>1.0.0.0</txtProductVersion>
+                                <productName>App</productName>
+                                <companyName>Lukasz Lenart</companyName>
+                                <internalName>app</internalName>
+                                <originalFilename>app.exe</originalFilename>
+                                <trademarks>Luk ™</trademarks>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
     <profiles>
         <profile>
